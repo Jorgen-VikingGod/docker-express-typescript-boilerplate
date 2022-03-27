@@ -1,6 +1,6 @@
 import { Request, RequestHandler } from 'express';
 import requestMiddleware from '../../middleware/request-middleware';
-import Book from '../../models/Book';
+// import Book from '../../models/Book';
 
 /**
  * Builds a mongoose query object to search books according to book name and author name.
@@ -28,7 +28,11 @@ const search: RequestHandler = async (req: Request<{}, {}, {}, SearchReqBody>, r
   const { name, author } = req.query;
 
   const query = buildBookSeachQuery(name, author);
-  const books = await Book.find(query);
+  // const books = await Book.find(query);
+  const books = [
+    {name: 'test1', author: 'test1'},
+    {name: 'test2', author: 'test2'}
+  ];
   res.send({ books });
 };
 

@@ -1,7 +1,7 @@
 import { Request, RequestHandler } from 'express';
 import Joi from 'joi';
 import requestMiddleware from '../../middleware/request-middleware';
-import Book from '../../models/Book';
+// import Book from '../../models/Book';
 
 export const addBookSchema = Joi.object().keys({
   name: Joi.string().required(),
@@ -16,12 +16,12 @@ interface AddReqBody {
 const add: RequestHandler = async (req: Request<{}, {}, AddReqBody>, res) => {
   const { name, author } = req.body;
 
-  const book = new Book({ name, author });
-  await book.save();
+  // const book = new Book({ name, author });
+  // await book.save();
 
   res.send({
     message: 'Saved',
-    book: book.toJSON()
+    book: { name: 'test', author: 'test' }// book.toJSON()
   });
 };
 
